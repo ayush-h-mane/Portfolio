@@ -6,16 +6,46 @@ import { ScrollReveal } from './ScrollReveal';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 4000);
+
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/ayushhmane@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`,
+          _template: 'table'
+        })
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        setErrorMessage('Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setErrorMessage('Network error. Please try sending again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -116,17 +146,21 @@ export const Contact: React.FC = () => {
             {/* Submit Button */}
             <button
               type="submit"
+              disabled={isSubmitting}
               className="btn-primary-red"
               style={{
                 justifyContent: 'center',
                 width: '100%',
-                padding: '0.9rem 1.5rem'
+                padding: '0.9rem 1.5rem',
+                opacity: isSubmitting ? 0.7 : 1
               }}
             >
-              {submitted ? (
+              {isSubmitting ? (
+                <span>Sending Message...</span>
+              ) : submitted ? (
                 <>
                   <CheckCircle2 size={18} />
-                  <span>Message Sent Successfully!</span>
+                  <span>Sent to ayushhmane@gmail.com!</span>
                 </>
               ) : (
                 <>
@@ -135,6 +169,12 @@ export const Contact: React.FC = () => {
                 </>
               )}
             </button>
+
+            {errorMessage && (
+              <p style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '0.4rem', textAlign: 'center' }}>
+                {errorMessage}
+              </p>
+            )}
           </form>
         </ScrollReveal>
 
