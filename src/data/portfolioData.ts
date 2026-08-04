@@ -50,6 +50,14 @@ export interface EducationHistoryItem {
   details: string;
 }
 
+export const getAssetUrl = (path: string | undefined): string => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const cleanPath = path.replace(/^\//, '');
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  return baseUrl.endsWith('/') ? `${baseUrl}${cleanPath}` : `${baseUrl}/${cleanPath}`;
+};
+
 export const PERSONAL_INFO = {
   name: 'AYUSH H MANE',
   logoEmblem: 'AHM',
@@ -67,10 +75,10 @@ export const PERSONAL_INFO = {
   twitter: 'https://github.com/ayush-h-mane',
   instagram: 'https://www.instagram.com/ayush_h_mane/?hl=en',
   whatsapp: 'https://wa.me/919535174767',
-  avatarImage: '/ayush_mane.png',
-  aboutWorkspaceImage: '/workspace_modern.png',
-  experienceGraphic: '/experience_developer.png',
-  cvUrl: '/Ayush_H_Mane_Resume.pdf',
+  avatarImage: getAssetUrl('/ayush_mane.png'),
+  aboutWorkspaceImage: getAssetUrl('/workspace_modern.png'),
+  experienceGraphic: getAssetUrl('/experience_developer.png'),
+  cvUrl: getAssetUrl('/Ayush_H_Mane_Resume.pdf'),
 
   heroStats: [
     { value: '3+', label: 'Real AI & Cybersecurity Projects', icon: 'Folder' },
@@ -170,84 +178,84 @@ export const REAL_CERTIFICATIONS: CertificationItem[] = [
     title: 'Career Essentials in Generative AI',
     issuer: 'Microsoft & LinkedIn',
     icon: 'Sparkles',
-    fileUrl: '/certificates/Linkedin Learning/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn.pdf',
+    fileUrl: getAssetUrl('/certificates/Linkedin Learning/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn.pdf'),
     category: 'AI & Data'
   },
   {
     title: 'Anaconda Python for Data Science Professional Certificate',
     issuer: 'Anaconda & LinkedIn Learning',
     icon: 'Code',
-    fileUrl: '/certificates/Linkedin Learning/CertificateOfCompletion_Anaconda Python for Data Science Professional Certificate.pdf',
+    fileUrl: getAssetUrl('/certificates/Linkedin Learning/CertificateOfCompletion_Anaconda Python for Data Science Professional Certificate.pdf'),
     category: 'AI & Data'
   },
   {
     title: 'Data Engineering Foundations Professional Certificate',
     issuer: 'IBM & LinkedIn Learning',
     icon: 'Layers',
-    fileUrl: '/certificates/Linkedin Learning/CertificateOfCompletion_Data Engineering Foundations Professional Certificate by Astronomer.pdf',
+    fileUrl: getAssetUrl('/certificates/Linkedin Learning/CertificateOfCompletion_Data Engineering Foundations Professional Certificate by Astronomer.pdf'),
     category: 'AI & Data'
   },
   {
     title: 'Python for Everybody Specialization',
     issuer: 'University of Michigan / Coursera',
     icon: 'Code',
-    fileUrl: '/certificates/Coursera/Python for everybody-Coursera cerificate.jpeg',
+    fileUrl: getAssetUrl('/certificates/Coursera/Python for everybody-Coursera cerificate.jpeg'),
     category: 'AI & Data'
   },
   {
     title: 'Programming for Everybody (Getting Started with Python)',
     issuer: 'University of Michigan / Coursera',
     icon: 'Code',
-    fileUrl: '/certificates/Coursera/Python coursera certificate.jpeg',
+    fileUrl: getAssetUrl('/certificates/Coursera/Python coursera certificate.jpeg'),
     category: 'AI & Data'
   },
   {
     title: 'Introduction to Data Warehouses',
     issuer: 'LinkedIn Learning',
     icon: 'Layers',
-    fileUrl: '/certificates/Linkedin Learning/CertificateOfCompletion_Introduction to Data Warehouses.pdf',
+    fileUrl: getAssetUrl('/certificates/Linkedin Learning/CertificateOfCompletion_Introduction to Data Warehouses.pdf'),
     category: 'Software & Systems'
   },
   {
     title: 'Learning Data Governance',
     issuer: 'LinkedIn Learning',
     icon: 'Award',
-    fileUrl: '/certificates/Linkedin Learning/CertificateOfCompletion_Learning Data Governance.pdf',
+    fileUrl: getAssetUrl('/certificates/Linkedin Learning/CertificateOfCompletion_Learning Data Governance.pdf'),
     category: 'Software & Systems'
   },
   {
     title: 'Learning Virtualization & Cloud Systems',
     issuer: 'LinkedIn Learning',
     icon: 'Layers',
-    fileUrl: '/certificates/Linkedin Learning/CertificateOfCompletion_Learning Virtualization.pdf',
+    fileUrl: getAssetUrl('/certificates/Linkedin Learning/CertificateOfCompletion_Learning Virtualization.pdf'),
     category: 'Software & Systems'
   },
   {
     title: 'Networking & Systems Administration Fundamentals',
     issuer: 'LinkedIn Learning',
     icon: 'Layers',
-    fileUrl: '/certificates/Linkedin Learning/CertificateOfCompletion_Networking and Administration Fundamentals.pdf',
+    fileUrl: getAssetUrl('/certificates/Linkedin Learning/CertificateOfCompletion_Networking and Administration Fundamentals.pdf'),
     category: 'Software & Systems'
   },
   {
     title: 'English for Career Development',
     issuer: 'University of Pennsylvania / Coursera',
     icon: 'Sparkles',
-    fileUrl: '/certificates/Coursera/English For Career Development-Coursera cetificate.jpeg',
+    fileUrl: getAssetUrl('/certificates/Coursera/English For Career Development-Coursera cetificate.jpeg'),
     category: 'Management & Career'
   },
   {
     title: 'Introduction to Project Management',
     issuer: 'Coursera',
     icon: 'Award',
-    fileUrl: '/certificates/Coursera/Introduction to Project Management-Coursera certificate.jpeg',
+    fileUrl: getAssetUrl('/certificates/Coursera/Introduction to Project Management-Coursera certificate.jpeg'),
     category: 'Management & Career'
   },
   {
     title: 'Workplace Productivity & MS Word',
     issuer: 'Coursera',
     icon: 'Code',
-    fileUrl: '/certificates/Coursera/MS-Word-Coursera certificcate.jpeg',
+    fileUrl: getAssetUrl('/certificates/Coursera/MS-Word-Coursera certificcate.jpeg'),
     category: 'Management & Career'
   }
 ];
@@ -391,7 +399,7 @@ export const FEATURED_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/ayush-h-mane/VTON-Virtual-Try-On',
     liveUrl: '#',
     featured: true,
-    image: '/vton_cover.png'
+    image: getAssetUrl('/vton_cover.png')
   },
   {
     id: 'multilingual-toxicity',
@@ -410,7 +418,7 @@ export const FEATURED_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/ayush-h-mane/Multilingual-Sarcasm-Aware-Toxicity-Detection',
     liveUrl: '#',
     featured: true,
-    image: '/deberta_cover.png'
+    image: getAssetUrl('/deberta_cover.png')
   },
   {
     id: 'suspicious-url-detection',
@@ -429,7 +437,7 @@ export const FEATURED_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/ayush-h-mane/ML-Enhanced-Suspicious-URL-Detection-for-Cybersecurity',
     liveUrl: '#',
     featured: true,
-    image: '/cyber_cover.png'
+    image: getAssetUrl('/cyber_cover.png')
   }
 ];
 
