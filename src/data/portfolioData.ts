@@ -446,7 +446,7 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     id: 'exp-glowlogics',
     role: 'AI Intern',
     company: 'GlowLogics Solutions Pvt. Ltd.',
-    period: 'Sep 2024 - Dec 2025',
+    period: 'Sep 2025 - Dec 2025',
     description: 'Developed AI/ML solutions using Python-based machine learning frameworks. Performed data preprocessing, model evaluation, hyperparameter optimization, and REST API integrations.',
     bullets: [
       'Developed AI/ML solutions using Python-based machine learning frameworks.',
