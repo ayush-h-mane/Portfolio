@@ -72,7 +72,7 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ isOpen
             <div style={{ display: 'grid', gap: '6px', margin: '4px 0', fontFamily: 'var(--font-code)' }}>
               <div><strong style={{ color: '#ef4444' }}>whoami</strong> — Print Ayush H Mane's bio & background</div>
               <div><strong style={{ color: '#ef4444' }}>education</strong> — View B.E. (CGPA 7.0), PUC (82.32%) & SSLC (88.32%)</div>
-              <div><strong style={{ color: '#ef4444' }}>experience</strong> — View AI internship at GlowLogics (Sep 2024 - Dec 2025)</div>
+              <div><strong style={{ color: '#ef4444' }}>experience</strong> — View AI internship at GlowLogics (Sep 2025 - Dec 2025)</div>
               <div><strong style={{ color: '#ef4444' }}>journey</strong> — Display full timeline & 2024 Theatre milestone</div>
               <div><strong style={{ color: '#ef4444' }}>skills</strong> — Display technical stack & proficiency matrix</div>
               <div><strong style={{ color: '#ef4444' }}>projects</strong> — List featured software monorepos (VTON, Toxicity, Threat ML)</div>
@@ -144,7 +144,7 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ isOpen
           content: (
             <div style={{ fontFamily: 'var(--font-code)', fontSize: '0.85rem' }}>
               <div style={{ color: '#ef4444', fontWeight: 'bold' }}>💼 GlowLogics Solutions Pvt. Ltd. — AI Intern</div>
-              <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Bengaluru, Karnataka, India (Sep 2024 – Dec 2025)</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Bengaluru, Karnataka, India (Sep 2025 – Dec 2025)</div>
               <div style={{ marginTop: '4px' }}>• Developed AI/ML solutions using Python-based machine learning frameworks.</div>
               <div>• Performed data preprocessing, feature engineering, model evaluation, and hyperparameter optimization.</div>
               <div>• Collaborated on real-world AI software integration and backend REST API data workflows.</div>

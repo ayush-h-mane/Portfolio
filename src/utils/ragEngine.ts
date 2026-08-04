@@ -19,7 +19,7 @@ VERIFIED PROFILE OF AYUSH H MANE:
   1. B.E. in Artificial Intelligence & Machine Learning at Acharya Institute of Technology, Bengaluru (2023 – 2027) | CGPA: 7.0 / 10
   2. Pre-University Course (PUC 12th Grade Science - PCMB) at S.A.V Composite PU College (2021 – 2023) | Percentage: 82.32%
   3. Secondary School Leaving Certificate (SSLC 10th Grade) at St. Dominic's High School (2020 – 2021) | Percentage: 88.32%
-- Industry Internship: AI Intern at GlowLogics Solutions Pvt. Ltd., Bengaluru (Sep 2024 – Dec 2025) (Python, Scikit-learn, ML data pipelines, feature engineering, model hyperparameter tuning).
+- Industry Internship: AI Intern at GlowLogics Solutions Pvt. Ltd., Bengaluru (Sep 2025 – Dec 2025) (Python, Scikit-learn, ML data pipelines, feature engineering, model hyperparameter tuning).
 - Flagship Monorepos & Real-World Projects:
   1. VTON – Full-Stack Virtual Try-On Platform (FastAPI, React.js, OpenCV, Docker, MediaPipe 3D Pose Warping, Thin-Plate Spline garment warping).
   2. Multilingual Sarcasm-Aware Toxicity Detection (DeBERTa transformers, PyTorch, Streamlit).
@@ -92,7 +92,7 @@ export function generateRAGResponse(query: string): string {
 
   // 5. ABOUT / BIO / WHO IS AYUSH / OVERVIEW
   if (q.includes('who') || q.includes('about') || q.includes('bio') || q.includes('yourself') || q.includes('ayush') || q.includes('summary') || q.includes('intro') || q.includes('background')) {
-    return `👨‍💻 **Ayush H Mane — Full-Stack Developer & AI Engineer**\n\n• **Role**: AI & ML Engineering Student | Full-Stack Developer\n• **Education**: B.E. in AI & ML at **Acharya Institute of Technology, Bengaluru** (**7.0 / 10 CGPA**, 2023–2027)\n• **Schooling**: PUC Science (**82.32%**) | SSLC High School (**88.32%**)\n• **Experience**: AI Intern at **GlowLogics Solutions Pvt. Ltd.** (Sep 2024 – Dec 2025)\n• **Theatre**: Joined Utkarsh-Abhinaya Theatre Club in 2024 (National & State Winner)\n• **Location**: Bengaluru, Karnataka, India`;
+    return `👨‍💻 **Ayush H Mane — Full-Stack Developer & AI Engineer**\n\n• **Role**: AI & ML Engineering Student | Full-Stack Developer\n• **Education**: B.E. in AI & ML at **Acharya Institute of Technology, Bengaluru** (**7.0 / 10 CGPA**, 2023–2027)\n• **Schooling**: PUC Science (**82.32%**) | SSLC High School (**88.32%**)\n• **Experience**: AI Intern at **GlowLogics Solutions Pvt. Ltd.** (Sep 2025 – Dec 2025)\n• **Theatre**: Joined Utkarsh-Abhinaya Theatre Club in 2024 (National & State Winner)\n• **Location**: Bengaluru, Karnataka, India`;
   }
 
   // 6. EDUCATION / COLLEGE / CGPA / SCHOOLING
@@ -102,7 +102,7 @@ export function generateRAGResponse(query: string): string {
 
   // 7. EXPERIENCE / INTERNSHIP / GLOWLOGICS
   if (q.includes('experience') || q.includes('intern') || q.includes('glowlogics') || q.includes('job') || q.includes('career')) {
-    return `💼 **Professional Experience**:\n\n**GlowLogics Solutions Pvt. Ltd.** — *AI Intern (Bengaluru, India | Sep 2024 – Dec 2025)*\n• Developed AI/ML solutions using Python-based machine learning frameworks.\n• Performed data preprocessing, feature engineering, model evaluation, and hyperparameter optimization.\n• Collaborated on real-world AI software integration and backend REST API data workflows.`;
+    return `💼 **Professional Experience**:\n\n**GlowLogics Solutions Pvt. Ltd.** — *AI Intern (Bengaluru, India | Sep 2025 – Dec 2025)*\n• Developed AI/ML solutions using Python-based machine learning frameworks.\n• Performed data preprocessing, feature engineering, model evaluation, and hyperparameter optimization.\n• Collaborated on real-world AI software integration and backend REST API data workflows.`;
   }
 
   // 8. SKILLS / TECH STACK
