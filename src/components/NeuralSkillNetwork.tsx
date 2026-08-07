@@ -234,6 +234,30 @@ export const NeuralSkillNetwork: React.FC = () => {
     isDraggingRef.current = false;
   };
 
+  // Touch interaction handlers for Mobile manual 3D rotation
+  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (e.touches.length === 1) {
+      isDraggingRef.current = true;
+      lastMousePosRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (!isDraggingRef.current || e.touches.length !== 1) return;
+    const touch = e.touches[0];
+    const dx = touch.clientX - lastMousePosRef.current.x;
+    const dy = touch.clientY - lastMousePosRef.current.y;
+
+    rotationRef.current.ry += dx * 0.008;
+    rotationRef.current.rx += dy * 0.008;
+
+    lastMousePosRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = () => {
+    isDraggingRef.current = false;
+  };
+
   const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -348,8 +372,12 @@ export const NeuralSkillNetwork: React.FC = () => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
           onClick={handleCanvasClick}
-          style={{ width: '100%', height: '420px', display: 'block', borderRadius: '12px' }}
+          style={{ width: '100%', height: '420px', display: 'block', borderRadius: '12px', touchAction: 'none' }}
         />
 
         {/* Selected Skill Quick Detail Badge */}
