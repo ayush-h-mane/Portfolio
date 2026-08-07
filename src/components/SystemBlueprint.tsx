@@ -96,6 +96,7 @@ export const SystemBlueprint: React.FC = () => {
             onClick={handleRunPulseTest}
             onMouseEnter={() => soundFx.playHover()}
             disabled={isPulseActive}
+            className="blueprint-test-btn"
             style={{
               background: isPulseActive ? 'rgba(16, 185, 129, 0.2)' : 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)',
               border: `1px solid ${isPulseActive ? '#10b981' : '#ef4444'}`,
@@ -107,6 +108,7 @@ export const SystemBlueprint: React.FC = () => {
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'center',
               gap: '0.4rem',
               boxShadow: isPulseActive ? '0 0 15px rgba(16, 185, 129, 0.4)' : '0 4px 14px rgba(239, 68, 68, 0.4)',
               transition: 'all 0.2s ease'
@@ -143,7 +145,7 @@ export const SystemBlueprint: React.FC = () => {
         >
           {/* Left Column: Interactive Node Flow Diagram */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
               <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
                 PROJECT ARCHITECTURE TOPOLOGY (CLICK TO INSPECT)
               </span>
@@ -153,7 +155,7 @@ export const SystemBlueprint: React.FC = () => {
             </div>
 
             {/* Pipeline Flowchart Cards */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', position: 'relative' }}>
+            <div className="blueprint-nodes-container" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', position: 'relative' }}>
               {nodes.map((node, index) => {
                 const isSelected = node.id === selectedNodeId;
                 return (
@@ -164,6 +166,7 @@ export const SystemBlueprint: React.FC = () => {
                         setSelectedNodeId(node.id);
                       }}
                       onMouseEnter={() => soundFx.playHover()}
+                      className="blueprint-node-card"
                       style={{
                         padding: '0.85rem 1.15rem',
                         borderRadius: '10px',
@@ -177,7 +180,7 @@ export const SystemBlueprint: React.FC = () => {
                         boxShadow: isSelected ? '0 0 20px rgba(239, 68, 68, 0.25)' : 'none'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: 0 }}>
                         <div
                           style={{
                             width: '36px',
@@ -186,18 +189,19 @@ export const SystemBlueprint: React.FC = () => {
                             background: 'rgba(255,255,255,0.06)',
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
+                            flexShrink: 0
                           }}
                         >
                           {node.icon}
                         </div>
-                        <div>
-                          <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#ffffff' }}>{node.name}</div>
-                          <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{node.tech}</div>
+                        <div style={{ minWidth: 0, flex: 1 }}>
+                          <div className="blueprint-node-title" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#ffffff', wordBreak: 'break-word' }}>{node.name}</div>
+                          <div className="blueprint-node-tech" style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{node.tech}</div>
                         </div>
                       </div>
 
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                      <div className="blueprint-node-badge" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexShrink: 0, marginLeft: '0.5rem' }}>
                         <span
                           style={{
                             fontSize: '0.72rem',
@@ -243,6 +247,7 @@ export const SystemBlueprint: React.FC = () => {
 
           {/* Right Column: Node Inspector & Code Snippet Panel */}
           <div
+            className="blueprint-inspector-panel"
             style={{
               background: 'rgba(5, 3, 7, 0.8)',
               border: '1px solid rgba(239, 68, 68, 0.25)',
@@ -274,7 +279,7 @@ export const SystemBlueprint: React.FC = () => {
               </p>
 
               {/* Specs Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
+              <div className="blueprint-specs-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
                 <div style={{ background: 'rgba(255,255,255,0.03)', padding: '0.6rem 0.85rem', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.06)' }}>
                   <span style={{ display: 'block', fontSize: '0.68rem', color: 'var(--text-muted)' }}>Tech Framework</span>
                   <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#ffffff' }}>{activeNode.tech}</span>
@@ -292,6 +297,7 @@ export const SystemBlueprint: React.FC = () => {
                   REAL CODE IMPLEMENTATION SNIPPET
                 </span>
                 <pre
+                  className="blueprint-code-snippet"
                   style={{
                     background: '#090509',
                     border: '1px solid rgba(239, 68, 68, 0.2)',

@@ -320,6 +320,46 @@ body {
     gap: 0.75rem !important;
   }
 
+  /* Reconstructed System Architecture & Project Topology Mobile Layout */
+  .blueprint-test-btn {
+    width: 100% !important;
+    padding: 0.65rem 1rem !important;
+  }
+
+  .blueprint-outer-grid {
+    padding: 1.15rem !important;
+    gap: 1.25rem !important;
+  }
+
+  .blueprint-node-card {
+    padding: 0.7rem 0.85rem !important;
+  }
+
+  .blueprint-node-title {
+    font-size: 0.8rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .blueprint-node-tech {
+    font-size: 0.68rem !important;
+  }
+
+  .blueprint-inspector-panel {
+    padding: 1rem !important;
+  }
+
+  .blueprint-specs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+
+  .blueprint-code-snippet {
+    font-size: 0.7rem !important;
+    max-height: 160px !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+  }
+
   /* Disable extreme transforms on touch mobile for smooth scrolling */
   .glass-card:hover, .pop-card:hover {
     transform: translateY(-2px) scale(1.002) !important;
