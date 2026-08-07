@@ -243,7 +243,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenTerminal, onToggleMatrix, 
             rel="noopener noreferrer"
             onMouseEnter={() => soundFx.playHover()}
             onClick={() => soundFx.playClick()}
-            className="btn-outline-dark"
+            className="btn-outline-dark header-cv-btn"
             style={{
               padding: '0.42rem 0.9rem',
               fontSize: '0.8rem',
