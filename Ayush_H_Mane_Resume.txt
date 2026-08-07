@@ -1,0 +1,42 @@
+AYUSH H MANE
++91 9535174767 | ayushhmane@gmail.com | LinkedIn: linkedin.com/in/ayush-h-mane | GitHub: github.com/ayush-h-mane | Bengaluru, Karnataka
+
+SUMMARY
+Aspiring Full-Stack Software Engineer with hands-on experience in designing and developing scalable web applications using React.js, Next.js, FastAPI, Node.js, Python, SQL, and modern development tools. Skilled in building responsive frontends, secure backend APIs, and database-driven applications while following clean coding practices. Experienced in integrating Machine Learning, Computer Vision, and NLP into real-world software solutions. A quick learner with strong analytical, leadership, and problem-solving abilities, passionate about building innovative products that create meaningful user impact.
+
+EDUCATION
+Acharya Institute of Technology, Bengaluru (2023 - 2027)
+B.E. in Artificial Intelligence & Machine Learning | CGPA: 7.0/10
+
+TECHNICAL SKILLS
+Programming: Python, JavaScript, SQL, C
+Frontend: React.js, Next.js, HTML, CSS, Bootstrap
+Backend: FastAPI, Node.js, Express.js, REST APIs
+AI/ML: TensorFlow, PyTorch, Scikit-learn, OpenCV, Pandas, NumPy
+Databases: MySQL, MongoDB
+Developer Tools: Git, GitHub, Xampp, VS Code, Tableau, Power BI, Vercel, Cursor, MCP, Razorpay
+
+EXPERIENCE
+GlowLogics Solutions Pvt. Ltd. - AI Intern (Bengaluru)
+- Developed AI/ML solutions using Python-based frameworks.
+- Performed data preprocessing, model evaluation and optimization.
+
+SELECTED PROJECTS
+VTON - Full-Stack Virtual Try-On Platform
+Tech Stack: Python, FastAPI, React.js, OpenCV, XAMPP, REST APIs
+Developed a full-stack AI-powered virtual try-on platform that enables users to visualize garments on uploaded images using computer vision and pose estimation. Built scalable RESTful APIs with FastAPI, integrated a responsive React.js frontend, and optimized image processing for a smooth user experience.
+
+Multilingual Sarcasm-Aware Toxicity Detection
+Tech Stack: Python, PyTorch, DeBERTa, Streamlit, NLP
+Built a multilingual NLP application to detect sarcasm and toxic content across multiple languages using the DeBERTa transformer model. Implemented text preprocessing, model inference, and a Streamlit-based interface for accurate real-time toxicity detection.
+
+LEADERSHIP & ACTIVITIES
+- Acharya Kannada Vedike: Head of Promotions & Content
+- Utkarsh-Abhinaya Theatre Club: National & State-level participant and winner
+- Events Coordinator: Srishti 2026 Innovation Exchange
+
+CERTIFICATIONS
+- Google Data Analytics Professional Certificate
+- Career Essentials in Generative AI (Microsoft & LinkedIn)
+- Anaconda Python for Data Science Professional Certificate
+- Data Engineering Foundations Professional Certificate
