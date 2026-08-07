@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "npx vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "git push origin main",
     "lint": "oxlint",
     "preview": "vite preview"
   },
