@@ -2,6 +2,7 @@ import React from 'react';
 import { X, ExternalLink, Sparkles, CheckCircle2, Layers, Cpu } from 'lucide-react';
 import type { Project } from '../types/portfolio';
 import { GithubIcon } from './Icons';
+import { ProjectSandbox } from './ProjectSandbox';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -186,8 +187,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </div>
           )}
 
+          {/* Live Interactive Project Sandbox */}
+          <ProjectSandbox projectTitle={project.title} />
+
           {/* Footer Action Links */}
-          <div style={{ display: 'flex', gap: '16px', borderTop: '1px solid var(--border-color)', paddingTop: '24px' }}>
+          <div style={{ display: 'flex', gap: '16px', borderTop: '1px solid var(--border-color)', paddingTop: '24px', marginTop: '24px' }}>
             {project.githubUrl && (
               <a
                 href={project.githubUrl}

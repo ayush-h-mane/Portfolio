@@ -4,6 +4,7 @@ import { GithubIcon } from './Icons';
 import { FEATURED_PROJECTS, Project } from '../data/portfolioData';
 import { ProjectModal } from './ProjectModal';
 import { ScrollReveal } from './ScrollReveal';
+import { HoloCard } from './HoloCard';
 
 export const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<'All' | 'AI / ML' | 'Full Stack' | 'NLP'>('All');
@@ -107,17 +108,19 @@ export const Projects: React.FC = () => {
       >
         {filteredProjects.map((project, idx) => (
           <ScrollReveal key={project.id} delay={idx * 150} direction="up">
-            <div
-              className="glass-card pop-card"
-              style={{
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100%',
-                cursor: 'pointer'
-              }}
-              onClick={() => setSelectedProject(project)}
-            >
+            <HoloCard style={{ height: '100%', borderRadius: '1.25rem' }}>
+              <div
+                className="glass-card pop-card"
+                style={{
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  cursor: 'pointer',
+                  borderRadius: '1.25rem'
+                }}
+                onClick={() => setSelectedProject(project)}
+              >
               {/* Card Banner Image */}
               <div
                 style={{
@@ -266,7 +269,8 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
             </div>
-          </ScrollReveal>
+          </HoloCard>
+        </ScrollReveal>
         ))}
       </div>
 

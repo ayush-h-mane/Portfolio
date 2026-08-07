@@ -1,7 +1,68 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bot, X, Send, Copy, Trash2, Key, Sparkles, Volume2, ThumbsUp, ThumbsDown, ArrowRight } from 'lucide-react';
+import { Bot, X, Send, Copy, Trash2, Key, Sparkles, Volume2, ThumbsUp, ThumbsDown, ArrowRight, Mic, MicOff } from 'lucide-react';
 import { askGeminiAI } from '../utils/ragEngine';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { soundFx } from '../utils/soundFx';
+
+// Waveform Visualizer Canvas Sub-component
+const AudioWaveformVisualizer: React.FC<{ isActive: boolean }> = ({ isActive }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animId: number;
+    let phase = 0;
+
+    const render = () => {
+      const w = (canvas.width = canvas.parentElement?.clientWidth || 300);
+      const h = (canvas.height = 36);
+
+      ctx.clearRect(0, 0, w, h);
+
+      if (!isActive) {
+        ctx.fillStyle = 'rgba(239, 68, 68, 0.15)';
+        ctx.fillRect(0, h / 2 - 1, w, 2);
+        return;
+      }
+
+      phase += 0.12;
+      const barCount = 32;
+      const barWidth = w / barCount - 3;
+
+      for (let i = 0; i < barCount; i++) {
+        const amp = Math.sin(phase + i * 0.3) * 14 + Math.cos(phase * 0.8 + i * 0.2) * 8;
+        const barHeight = Math.max(4, Math.abs(amp) + 6);
+        const x = i * (barWidth + 3);
+        const y = (h - barHeight) / 2;
+
+        const grad = ctx.createLinearGradient(0, y, 0, y + barHeight);
+        grad.addColorStop(0, '#ef4444');
+        grad.addColorStop(1, '#991b1b');
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(x, y, barWidth, barHeight);
+      }
+
+      animId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      cancelAnimationFrame(animId);
+    };
+  }, [isActive]);
+
+  return (
+    <div style={{ width: '100%', padding: '4px 18px', background: 'rgba(15, 9, 16, 0.8)', borderBottom: '1px solid rgba(239, 68, 68, 0.2)' }}>
+      <canvas ref={canvasRef} style={{ width: '100%', height: '36px', display: 'block' }} />
+    </div>
+  );
+};
 
 interface ActionItem {
   label: string;
@@ -28,6 +89,44 @@ export const AIChatBot: React.FC = () => {
   const [apiKey, setApiKey] = useState<string>('');
   const [showKeyInput, setShowKeyInput] = useState<boolean>(false);
   const [speakingId, setSpeakingId] = useState<string | null>(null);
+  const [isListening, setIsListening] = useState<boolean>(false);
+
+  const handleVoiceListen = () => {
+    soundFx.playClick();
+    const SpeechRecognition = (window as unknown as { SpeechRecognition?: any; webkitSpeechRecognition?: any }).SpeechRecognition ||
+                              (window as unknown as { SpeechRecognition?: any; webkitSpeechRecognition?: any }).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      alert('Speech Recognition is not supported on this browser.');
+      return;
+    }
+
+    if (isListening) {
+      setIsListening(false);
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onstart = () => setIsListening(true);
+      recognition.onend = () => setIsListening(false);
+
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        if (transcript) {
+          setInputMessage(transcript);
+          soundFx.playSuccess();
+        }
+      };
+
+      recognition.start();
+    } catch {
+      setIsListening(false);
+    }
+  };
 
   const initialWelcomeActions: ActionItem[] = [
     { label: 'VTON Try-On', type: 'ask_question', payload: 'Tell me about VTON Virtual Try-On project' },
@@ -547,6 +646,9 @@ export const AIChatBot: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Audio Waveform Visualizer */}
+          <AudioWaveformVisualizer isActive={isListening || speakingId !== null} />
+
           {/* Quick Prompts Bar */}
           <div
             style={{
@@ -561,7 +663,10 @@ export const AIChatBot: React.FC = () => {
             {quickPrompts.map((qp, idx) => (
               <button
                 key={idx}
-                onClick={() => handleSendMessage(qp)}
+                onClick={() => {
+                  soundFx.playClick();
+                  handleSendMessage(qp);
+                }}
                 style={{
                   whiteSpace: 'nowrap',
                   background: 'rgba(220, 38, 38, 0.1)',
@@ -575,6 +680,7 @@ export const AIChatBot: React.FC = () => {
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
+                  soundFx.playHover();
                   e.currentTarget.style.background = 'rgba(220, 38, 38, 0.2)';
                 }}
                 onMouseLeave={(e) => {
@@ -597,7 +703,8 @@ export const AIChatBot: React.FC = () => {
               background: 'var(--bg-card)',
               borderTop: '1px solid var(--border-color)',
               display: 'flex',
-              gap: '10px'
+              gap: '8px',
+              alignItems: 'center'
             }}
           >
             <input
@@ -605,22 +712,48 @@ export const AIChatBot: React.FC = () => {
               type="text"
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              placeholder="Ask Gemini anything about Ayush..."
+              placeholder={isListening ? "Listening... Speak now!" : "Ask Gemini anything about Ayush..."}
               style={{
                 flex: 1,
                 background: 'var(--bg-dark)',
-                border: '1px solid var(--border-color)',
+                border: isListening ? '1px solid #ef4444' : '1px solid var(--border-color)',
                 borderRadius: '99px',
                 padding: '10px 18px',
                 color: 'var(--text-white)',
                 fontSize: '0.88rem',
-                outline: 'none'
+                outline: 'none',
+                boxShadow: isListening ? '0 0 10px rgba(239,68,68,0.4)' : 'none'
               }}
             />
+
+            {/* Mic Toggle Button */}
+            <button
+              type="button"
+              onClick={handleVoiceListen}
+              title={isListening ? 'Stop Listening' : 'Voice Input (Speak your question)'}
+              style={{
+                background: isListening ? '#ef4444' : 'rgba(255,255,255,0.06)',
+                border: `1px solid ${isListening ? '#ef4444' : 'rgba(255,255,255,0.15)'}`,
+                color: isListening ? '#ffffff' : '#ef4444',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: isListening ? '0 0 12px rgba(239,68,68,0.6)' : 'none'
+              }}
+            >
+              {isListening ? <MicOff size={16} /> : <Mic size={16} />}
+            </button>
+
+            {/* Send Button */}
             <button
               type="submit"
               className="btn-primary-red"
-              style={{ padding: '10px 18px', fontSize: '0.75rem', borderRadius: '99px' }}
+              style={{ padding: '10px 18px', fontSize: '0.75rem', borderRadius: '99px', height: '40px' }}
             >
               <Send size={15} />
             </button>

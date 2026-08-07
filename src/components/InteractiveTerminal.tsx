@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, X, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO, PROJECTS, REAL_CERTIFICATIONS, JOURNEY_MILESTONES } from '../data/portfolioData';
+import { CyberHackerGame } from './CyberHackerGame';
 
 interface InteractiveTerminalProps {
   isOpen: boolean;
@@ -82,10 +83,20 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({ isOpen
               <div><strong style={{ color: '#ef4444' }}>contact</strong> — Show email, phone & location</div>
               <div><strong style={{ color: '#ef4444' }}>resume</strong> — Download official resume PDF</div>
               <div><strong style={{ color: '#ef4444' }}>hire</strong> — Run automated hiring script 🎉</div>
+              <div><strong style={{ color: '#ef4444' }}>hack</strong> — Launch Firewall Decryption Mini-Game 👾</div>
               <div><strong style={{ color: '#ef4444' }}>confetti</strong> — Deploy celebratory particles</div>
               <div><strong style={{ color: '#ef4444' }}>clear</strong> — Clear terminal screen</div>
             </div>
           )
+        });
+        break;
+
+      case 'hack':
+      case 'game':
+        newHistory.push({
+          id: Math.random().toString(),
+          type: 'output',
+          content: <CyberHackerGame onWin={() => triggerConfetti()} />
         });
         break;
 

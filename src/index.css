@@ -249,7 +249,27 @@ body {
    RESPONSIVE DESIGN SYSTEM FOR PC (DESKTOP) & MOBILE PHONES / TABLETS
    ========================================================================== */
 
-/* Tablet & Mobile Screens (<= 768px) */
+/* Tablet & Medium Mobile Screens (<= 900px) */
+@media (max-width: 900px) {
+  /* SystemBlueprint Grid Stack for Mobile */
+  #blueprint .pop-card {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* TailoredResumeBuilder Grid Stack for Mobile */
+  #tailored-resume label + div,
+  #tailored-resume .pop-card > div:first-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tailored-resume .pop-card > div:nth-child(2) {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+/* Mobile Phone Screens (<= 768px) */
 @media (max-width: 768px) {
   .section-container {
     padding: 3rem 1.25rem !important;
@@ -257,19 +277,50 @@ body {
 
   .section-header {
     margin-bottom: 1.75rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
   .section-header h2 {
-    font-size: 1.65rem !important;
+    font-size: 1.5rem !important;
   }
 
   .hero-intro-font {
     font-size: 1.05rem !important;
   }
 
+  .hero-title-font {
+    font-size: 2.35rem !important;
+  }
+
+  /* Hero Section Portrait Image & Stats Box for Mobile */
+  #home > div:nth-child(2) {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  #home .pop-image {
+    height: 380px !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+  }
+
+  #home .animate-float {
+    left: 4px !important;
+    bottom: 4px !important;
+    font-size: 0.95rem !important;
+    padding: 0.45rem 0.85rem !important;
+  }
+
+  /* CyberTimeMachine 2x2 Stats Ribbon on Mobile */
+  #experience .pop-card > div:nth-child(3) {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
   /* Disable extreme transforms on touch mobile for smooth scrolling */
   .glass-card:hover, .pop-card:hover {
-    transform: translateY(-4px) scale(1.01) !important;
+    transform: translateY(-3px) scale(1.005) !important;
   }
 
   .btn-primary-red, .btn-outline-dark {
@@ -280,14 +331,19 @@ body {
   }
 }
 
-/* Small Mobile Screens (<= 480px) */
+/* Small Smartphone Screens (<= 480px) */
 @media (max-width: 480px) {
   .section-container {
-    padding: 2.25rem 0.9rem !important;
+    padding: 2.25rem 0.85rem !important;
   }
 
   .hero-title-font {
-    font-size: 2.1rem !important;
+    font-size: 1.95rem !important;
+  }
+
+  #home .pop-image {
+    height: 320px !important;
+    max-width: 260px !important;
   }
 }
 

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SKILL_CATEGORIES_PROGRESS, JOURNEY_MILESTONES } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { NeuralSkillNetwork } from './NeuralSkillNetwork';
+import { soundFx } from '../utils/soundFx';
+import { Box, BarChart2 } from 'lucide-react';
 
 export const SkillsAndJourney: React.FC = () => {
+  const [viewMode, setViewMode] = useState<'3D' | '2D'>('3D');
+
   return (
     <section id="skills" className="section-container" style={{ position: 'relative' }}>
       <div
@@ -14,14 +19,70 @@ export const SkillsAndJourney: React.FC = () => {
         }}
         className="skills-journey-grid"
       >
-        {/* Left Side: MY SKILLS (With Progress Bars) */}
+        {/* Left Side: MY SKILLS (With Progress Bars / 3D Network) */}
         <ScrollReveal direction="right">
           <div>
-            {/* Header */}
-            <div className="section-header">
-              <span className="bullet-dot" />
-              <h2>MY SKILLS</h2>
+            {/* Header with 3D/2D Toggle */}
+            <div className="section-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.8rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <span className="bullet-dot" />
+                <h2>MY SKILLS</h2>
+              </div>
+
+              {/* Toggle Buttons */}
+              <div style={{ display: 'flex', background: 'rgba(0,0,0,0.4)', borderRadius: '8px', padding: '3px', border: '1px solid rgba(239, 68, 68, 0.25)' }}>
+                <button
+                  onClick={() => {
+                    soundFx.playClick();
+                    setViewMode('3D');
+                  }}
+                  onMouseEnter={() => soundFx.playHover()}
+                  style={{
+                    background: viewMode === '3D' ? 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)' : 'transparent',
+                    color: viewMode === '3D' ? '#fff' : 'var(--text-muted)',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '0.3rem 0.75rem',
+                    fontSize: '0.76rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <Box size={14} /> 3D Network
+                </button>
+                <button
+                  onClick={() => {
+                    soundFx.playClick();
+                    setViewMode('2D');
+                  }}
+                  onMouseEnter={() => soundFx.playHover()}
+                  style={{
+                    background: viewMode === '2D' ? 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)' : 'transparent',
+                    color: viewMode === '2D' ? '#fff' : 'var(--text-muted)',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '0.3rem 0.75rem',
+                    fontSize: '0.76rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <BarChart2 size={14} /> 2D Bars
+                </button>
+              </div>
             </div>
+
+            {viewMode === '3D' ? (
+              <NeuralSkillNetwork />
+            ) : (
 
             <div
               className="glass-card pop-card"
@@ -89,6 +150,7 @@ export const SkillsAndJourney: React.FC = () => {
                 </div>
               ))}
             </div>
+            )}
           </div>
         </ScrollReveal>
 

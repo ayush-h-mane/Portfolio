@@ -1,17 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EXPERIENCE_ITEMS, PERSONAL_INFO } from '../data/portfolioData';
 import { ScrollReveal } from './ScrollReveal';
+import { CyberTimeMachine } from './CyberTimeMachine';
+import { soundFx } from '../utils/soundFx';
+import { Clock, List } from 'lucide-react';
 
 export const Experience: React.FC = () => {
+  const [mode, setMode] = useState<'timemachine' | 'standard'>('timemachine');
+
   return (
     <section id="experience" className="section-container" style={{ position: 'relative' }}>
-      {/* Header */}
+      {/* Header with Mode Switcher */}
       <ScrollReveal direction="down">
-        <div className="section-header">
-          <span className="bullet-dot" />
-          <h2>EXPERIENCE</h2>
+        <div className="section-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <span className="bullet-dot" />
+            <h2>EXPERIENCE & CAREER</h2>
+          </div>
+
+          <div style={{ display: 'flex', background: 'rgba(0,0,0,0.4)', borderRadius: '8px', padding: '3px', border: '1px solid rgba(239, 68, 68, 0.25)' }}>
+            <button
+              onClick={() => {
+                soundFx.playClick();
+                setMode('timemachine');
+              }}
+              onMouseEnter={() => soundFx.playHover()}
+              style={{
+                background: mode === 'timemachine' ? 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)' : 'transparent',
+                color: mode === 'timemachine' ? '#fff' : 'var(--text-muted)',
+                border: 'none',
+                borderRadius: '6px',
+                padding: '0.35rem 0.85rem',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <Clock size={14} /> Time Machine
+            </button>
+            <button
+              onClick={() => {
+                soundFx.playClick();
+                setMode('standard');
+              }}
+              onMouseEnter={() => soundFx.playHover()}
+              style={{
+                background: mode === 'standard' ? 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)' : 'transparent',
+                color: mode === 'standard' ? '#fff' : 'var(--text-muted)',
+                border: 'none',
+                borderRadius: '6px',
+                padding: '0.35rem 0.85rem',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <List size={14} /> Timeline View
+            </button>
+          </div>
         </div>
       </ScrollReveal>
+
+      {mode === 'timemachine' ? (
+        <CyberTimeMachine />
+      ) : ( 
 
       <div
         style={{
@@ -155,6 +215,7 @@ export const Experience: React.FC = () => {
           </div>
         </ScrollReveal>
       </div>
+      )}
     </section>
   );
 };

@@ -5,6 +5,7 @@ import { AboutSection } from './components/AboutSection';
 import { EducationSection } from './components/EducationSection';
 import { ServicesSection } from './components/ServicesSection';
 import { Projects } from './components/Projects';
+import { SystemBlueprint } from './components/SystemBlueprint';
 import { Experience } from './components/Experience';
 import { AchievementsSection } from './components/AchievementsSection';
 import { SkillsAndJourney } from './components/SkillsAndJourney';
@@ -13,9 +14,12 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { InteractiveTerminal } from './components/InteractiveTerminal';
 import { AIChatBot } from './components/AIChatBot';
+import { MatrixCodeRain } from './components/MatrixCodeRain';
+import { TailoredResumeBuilder } from './components/TailoredResumeBuilder';
 
 export function App() {
   const [terminalOpen, setTerminalOpen] = useState(false);
+  const [matrixActive, setMatrixActive] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     const saved = localStorage.getItem('theme');
     return (saved === 'light' || saved === 'dark') ? saved : 'dark';
@@ -32,9 +36,13 @@ export function App() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: 'var(--bg-dark)', color: 'var(--text-primary)', transition: 'background-color 0.3s ease, color 0.3s ease' }}>
+      {/* Full-Screen Cyberpunk Matrix Code Rain Overlay */}
+      <MatrixCodeRain isActive={matrixActive} onClose={() => setMatrixActive(false)} />
+
       {/* Top Navbar Header with Theme Switcher */}
       <Header
         onOpenTerminal={() => setTerminalOpen(true)}
+        onToggleMatrix={() => setMatrixActive((prev) => !prev)}
         theme={theme}
         onToggleTheme={toggleTheme}
       />
@@ -44,12 +52,14 @@ export function App() {
         <main style={{ width: '100%', maxWidth: '1380px', margin: '0 auto', paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingTop: '5.5rem' }}>
           <Hero onOpenTerminal={() => setTerminalOpen(true)} />
           <AboutSection />
-          <EducationSection />
-          <ServicesSection />
+          <SkillsAndJourney />
+          <SystemBlueprint />
           <Projects />
           <Experience />
+          <TailoredResumeBuilder />
+          <EducationSection />
+          <ServicesSection />
           <AchievementsSection />
-          <SkillsAndJourney />
           <TechnologiesStrip />
           <Contact />
         </main>
