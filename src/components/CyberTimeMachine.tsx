@@ -151,6 +151,7 @@ export const CyberTimeMachine: React.FC = () => {
 
       {/* Dynamic Animated Stats Ribbon for Selected Era */}
       <div
+        className="time-machine-stats-ribbon"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',

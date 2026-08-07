@@ -249,21 +249,24 @@ body {
    RESPONSIVE DESIGN SYSTEM FOR PC (DESKTOP) & MOBILE PHONES / TABLETS
    ========================================================================== */
 
-/* Tablet & Medium Mobile Screens (<= 900px) */
-@media (max-width: 900px) {
-  /* SystemBlueprint Grid Stack for Mobile */
-  #blueprint .pop-card {
+/* Tablet & Medium Mobile Screens (<= 960px) */
+@media (max-width: 960px) {
+  .hero-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
+  }
+
+  .blueprint-outer-grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
   }
 
-  /* TailoredResumeBuilder Grid Stack for Mobile */
-  #tailored-resume label + div,
-  #tailored-resume .pop-card > div:first-child {
+  .resume-inputs-grid {
     grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
-  #tailored-resume .pop-card > div:nth-child(2) {
+  .resume-results-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
   }
@@ -272,78 +275,78 @@ body {
 /* Mobile Phone Screens (<= 768px) */
 @media (max-width: 768px) {
   .section-container {
-    padding: 3rem 1.25rem !important;
+    padding: 2.75rem 1.15rem !important;
   }
 
   .section-header {
-    margin-bottom: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    gap: 0.5rem !important;
   }
 
   .section-header h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.45rem !important;
   }
 
   .hero-intro-font {
-    font-size: 1.05rem !important;
+    font-size: 1rem !important;
   }
 
   .hero-title-font {
-    font-size: 2.35rem !important;
+    font-size: 2.15rem !important;
+    word-break: break-word;
   }
 
-  /* Hero Section Portrait Image & Stats Box for Mobile */
-  #home > div:nth-child(2) {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-
-  #home .pop-image {
+  .hero-portrait-card {
     height: 380px !important;
-    max-width: 300px !important;
+    max-width: 290px !important;
     margin: 0 auto !important;
   }
 
-  #home .animate-float {
-    left: 4px !important;
-    bottom: 4px !important;
-    font-size: 0.95rem !important;
+  .hero-floating-badge {
+    left: 2px !important;
+    bottom: 2px !important;
+    font-size: 0.9rem !important;
     padding: 0.45rem 0.85rem !important;
   }
 
-  /* CyberTimeMachine 2x2 Stats Ribbon on Mobile */
-  #experience .pop-card > div:nth-child(3) {
+  .time-machine-stats-ribbon {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.75rem !important;
   }
 
   /* Disable extreme transforms on touch mobile for smooth scrolling */
   .glass-card:hover, .pop-card:hover {
-    transform: translateY(-3px) scale(1.005) !important;
+    transform: translateY(-2px) scale(1.002) !important;
   }
 
   .btn-primary-red, .btn-outline-dark {
     width: 100%;
     justify-content: center;
     padding: 0.75rem 1.25rem;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 }
 
 /* Small Smartphone Screens (<= 480px) */
 @media (max-width: 480px) {
   .section-container {
-    padding: 2.25rem 0.85rem !important;
+    padding: 2rem 0.75rem !important;
   }
 
   .hero-title-font {
-    font-size: 1.95rem !important;
+    font-size: 1.8rem !important;
   }
 
-  #home .pop-image {
+  .hero-portrait-card {
     height: 320px !important;
-    max-width: 260px !important;
+    max-width: 250px !important;
+  }
+
+  .time-machine-stats-ribbon {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
   }
 }
 

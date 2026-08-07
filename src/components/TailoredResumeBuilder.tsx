@@ -93,7 +93,7 @@ export const TailoredResumeBuilder: React.FC = () => {
           }}
         >
           {/* Top Inputs: Target Role & Target Company */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.5rem' }}>
+          <div className="resume-inputs-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.5rem' }}>
             <div>
               <label style={{ display: 'block', fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.4rem', textTransform: 'uppercase' }}>
                 1. SELECT TARGET ENGINEERING ROLE
@@ -154,6 +154,7 @@ export const TailoredResumeBuilder: React.FC = () => {
 
           {/* Results Summary Box */}
           <div
+            className="resume-results-grid"
             style={{
               background: 'rgba(5, 3, 7, 0.85)',
               border: '1px solid rgba(239, 68, 68, 0.25)',

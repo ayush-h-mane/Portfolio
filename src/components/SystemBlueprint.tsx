@@ -128,7 +128,7 @@ export const SystemBlueprint: React.FC = () => {
 
         {/* Blueprint Container */}
         <div
-          className="glass-card pop-card"
+          className="glass-card pop-card blueprint-outer-grid"
           style={{
             padding: '1.75rem',
             borderRadius: '16px',

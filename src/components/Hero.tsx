@@ -37,11 +37,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
       />
 
       <div
+        className="hero-grid-container"
         style={{
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: '3rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '2.5rem',
           alignItems: 'center',
           position: 'relative',
           zIndex: 1
@@ -87,7 +88,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
           {/* Subheading */}
           <p
             style={{
-              fontSize: '1.1rem',
+              fontSize: '1.05rem',
               color: 'var(--text-muted)',
               lineHeight: 1.6,
               maxWidth: '540px'
@@ -97,7 +98,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
           </p>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
             <a href="#projects" className="btn-primary-red">
               <span>View My Work</span>
               <ArrowRight size={16} />
@@ -168,13 +169,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
 
           {/* Portrait Container Box */}
           <div
-            className="pop-image"
+            className="pop-image hero-portrait-card"
             style={{
               position: 'relative',
               zIndex: 1,
               width: '100%',
               maxWidth: '380px',
-              height: '540px',
+              height: '520px',
               borderRadius: '1.75rem',
               overflow: 'hidden',
               border: '2px solid rgba(239, 68, 68, 0.35)',
@@ -199,11 +200,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
 
           {/* Floating </> Red Badge */}
           <div
-            className="animate-float"
+            className="animate-float hero-floating-badge"
             style={{
               position: 'absolute',
               bottom: '6%',
-              left: '-4%',
+              left: '-2%',
               zIndex: 2,
               background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #991b1b 100%)',
               color: '#ffffff',
