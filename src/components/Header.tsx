@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenTerminal, onToggleMatrix, 
           >
             {PERSONAL_INFO.logoEmblem}
           </div>
-          <div>
+          <div className="header-logo-text">
             <div
               style={{
                 fontSize: '1.05rem',
